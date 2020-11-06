@@ -42,13 +42,13 @@ public class AdapterItem implements AdapterItemInterface{
 	@Override
 	public Icon createIcon(int diameter) {
 		if(li != null) 
-			li.createIcon(diameter);
+			return li.createIcon(diameter);
 		
 		else if(ii != null) {
 			ii.setDiameter(diameter);
 			return ii;
 		}
-		
+		System.out.println("null");
 		return null;
 	}
 	

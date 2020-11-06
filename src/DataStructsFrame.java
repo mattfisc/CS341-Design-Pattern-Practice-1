@@ -2,6 +2,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.List;
 
 import javax.swing.BoxLayout;
 import javax.swing.JButton;
@@ -15,7 +16,7 @@ public class DataStructsFrame extends JFrame {
 		final JPanel panel = new JPanel();
 		panel.setLayout(new BoxLayout(panel, BoxLayout.PAGE_AXIS));
 
-		final ArrayList<ListItem> list = arrayToList(array1,array2);
+		final ArrayList<AdapterItem> list = arrayToList(array1,array2);
 
 		final ListPanel unorderedList = new ListPanel("Unordered List");
 		unorderedList.setDiameter(75);
@@ -30,9 +31,10 @@ public class DataStructsFrame extends JFrame {
 
 		sortButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent ae) {
-				sortHighToLow(list);
-				Collections.sort(list);
+				
+				//Collections.sort(list);
 				orderedList.removeAll();
+				orderedList.sortHighToLow(list);
 				orderedList.addItems(list);
 				panel.add(orderedList);
 				pack();
@@ -48,9 +50,10 @@ public class DataStructsFrame extends JFrame {
 
 		sortButton2.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent ae) {
-				sortLowToHigh(list);
-				Collections.sort(list);
+				
+				//Collections.sort(list);
 				orderedList.removeAll();
+				orderedList.sortLowToHigh(list);
 				orderedList.addItems(list);
 				panel.add(orderedList);
 				pack();
@@ -66,35 +69,16 @@ public class DataStructsFrame extends JFrame {
 		setVisible(true);
 	}
 
-	private ArrayList<ListItem> arrayToList(int[] array1,int[] array2) {
-		ArrayList<ListItem> list = new ArrayList<ListItem>();
+	private ArrayList<AdapterItem> arrayToList(int[] array1,int[] array2) {
+		ArrayList<AdapterItem> list = new ArrayList<AdapterItem>();
 
 		for (int i = 0; i < array1.length; i++) {
-			ListItem item = new ListItem(array1[i],array2[i]);
+			AdapterItem item = new AdapterItem( new ListItem(array1[i],array2[i]) );
 			list.add(item);
 		}
 
 		return list;
 	}
 	
-	private void sortHighToLow(ArrayList<ListItem> list) {
-		for(int i = 0; i < list.size()-1; i++) {
-			if(list.get(i).getValA() < list.get(i+1).getValA() ) {
-				ListItem temp = list.get(i);
-				list.set(i, list.get(i+1));
-				list.set(i+1, temp);
-				i = -1;
-			}
-		}
-	}
-	private void sortLowToHigh(ArrayList<ListItem> list) {
-		for(int i = 0; i < list.size()-1; i++) {
-			if(list.get(i).getValB() > list.get(i+1).getValB() ) {
-				ListItem temp = list.get(i);
-				list.set(i, list.get(i+1));
-				list.set(i+1, temp);
-				i = -1;
-			}
-		}
-	}
+	
 }
