@@ -24,40 +24,75 @@ public class ItemIcon implements Icon {
 	private int valA;
 	private int valB;
 	
+	/**
+	 * ItemIcon constructor
+	 * @param valA int for value A
+	 * @param valB int for value B
+	 */
 	public ItemIcon(int valA, int valB) {
 		this.valA = valA;
 		this.valB = valB;
 	}
 
+	/**
+	 * ItemIcon constructor
+	 * @param valA int for value A
+	 * @param valB int for value B
+	 * @param diameter int is the diameter of a ItemIcon
+	 */
 	public ItemIcon(int valA, int valB, int diameter) {
 		this.valA = (valA);
 		this.valB = (valB);
 		setDiameter(diameter);
 	}
 
+	/**
+	 * ItemIcon constructor
+	 * @param item ListItem converts to a ItemIcon
+	 */
 	public ItemIcon(ListItem item) {
 		this.valA = item.getValA();
 		this.valB = item.getValB();
 	}
 
+	/**
+	 * ItemIcon constructor
+	 * @param item ListItem converts elements to ItemIcon
+	 * @param diameter int sets the diameter
+	 */
 	public ItemIcon(ListItem item, int diameter) {
 		this(item);
 		setDiameter(diameter);
 	}
 
+	/**
+	 * setDiameter sets width and height of Icon by the diameter
+	 * @param diameter int for width and height of icon
+	 */
 	public void setDiameter(int diameter) {
 		width = diameter;
 		height = diameter;
 	}
 
+	/**
+	 * getIconHeight function gets the icon height
+	 * return int height and default thickness
+	 */
 	public int getIconHeight() {
 		return height + 2 * DEFAULT_THICKNESS;
 	}
 
+	/**
+	 * getIconWidth function gets the icon width
+	 * return int icon width and default thickness
+	 */
 	public int getIconWidth() {
 		return width + 2 * DEFAULT_THICKNESS;
 	}
 
+	/**
+	 * paintIcon function paints the icon on a graphic
+	 */
 	public void paintIcon(Component comp, Graphics g, int x, int y) {
 		// get graphics context
 		Graphics2D g2 = (Graphics2D) g;

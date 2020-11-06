@@ -6,16 +6,28 @@ public class AdapterItem implements AdapterItemInterface{
 	public ListItem li;
 	private ItemIcon ii;
 	
+	/**
+	 * AdapterItem constructor
+	 * @param li ListItem
+	 */
 	public AdapterItem(ListItem li) {
 		this.li = li;
 		this.ii = null;
 	}
 
+	/**
+	 * AdapterItem constructor
+	 * @param ii ItemIcon
+	 */
 	public AdapterItem(ItemIcon ii) {
 		this.li = null;
 		this.ii = ii;
 	}
 
+	/**
+	 * getValA function
+	 * return valA int
+	 */
 	@Override
 	public int getValA() {
 		if(li != null) 
@@ -28,6 +40,10 @@ public class AdapterItem implements AdapterItemInterface{
 			
 	}
 
+	/**
+	 * getValB function
+	 * return valB int
+	 */
 	@Override
 	public int getValB() {
 		if(li != null) 
@@ -39,6 +55,10 @@ public class AdapterItem implements AdapterItemInterface{
 		return 0;
 	}
 
+	/**
+	 * createIcon function of ItemIcon or ListItem
+	 * return Icon of a ItemIcon or ListItem 
+	 */
 	@Override
 	public Icon createIcon(int diameter) {
 		if(li != null) 
@@ -48,7 +68,6 @@ public class AdapterItem implements AdapterItemInterface{
 			ii.setDiameter(diameter);
 			return ii;
 		}
-		System.out.println("null");
 		return null;
 	}
 	
