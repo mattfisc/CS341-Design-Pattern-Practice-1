@@ -23,8 +23,9 @@
 
 public class MyMain {
 	public static void main(String[] args) {
-		int[] array = {25, 37, 12, 8, -5};
+		int[] array1 = {25, 37, 12, 8, -5};
+		int[] array2 = {-77,31,1,51,3};
 		
-		DataStructsFrame frame = new DataStructsFrame ("Adapter Design Pattern Demonstration", array);		
+		DataStructsFrame frame = new DataStructsFrame ("Adapter Design Pattern Demonstration", array1,array2);		
 	}
 }
